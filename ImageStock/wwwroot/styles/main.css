@@ -1,0 +1,51 @@
+﻿body {
+    background-color: floralwhite;
+}
+
+#header, #mainBody, #footer {
+    margin: 5px;
+}
+
+#header {
+    background-color: floralwhite;
+    min-height: 50px;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mainBody {
+    height: 80vh;
+    background-color: #ffe874;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #3575d5;
+    overflow: auto;
+}
+
+#footer {
+    background-color: powderblue;
+    min-height: 50px;
+    height: 8vh;
+    font-family: 'Segoe UI';
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ghostwhite;
+}
+
+
+#menu {
+    vertical-align: middle;
+}
+
+.menu_item {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.menu_item:hover {
+    background-color: #f9c582;
+}

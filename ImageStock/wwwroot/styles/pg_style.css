@@ -1,0 +1,120 @@
+#header, #wrap, #footer, #main, #sidebar {
+    border: solid 1px;
+    padding: 7px;
+    margin: 5px;
+}
+
+#fullwrap {
+    width: 100%;
+    height: 100%;
+    background: aqua;
+    padding: 7px;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    height: 12%;
+    background: cornflowerblue;
+}
+
+#m_logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 78%;
+}
+
+#wrap {
+    height: 77%;
+    background: slateblue;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+#main {
+    width: 70%;
+    background: seagreen;
+    color: lightcyan;
+    float: left;
+    overflow: scroll;
+    padding: 0 25px 0 25px;
+}
+
+#main, #sidebar {
+    height: 88%;
+}
+
+#msoft_1 {
+    width: 444px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#msoft_21, #msoft_31, #msoft_22, #msoft_33 {
+    margin: 5px;
+}
+
+#msoft_21, #msoft_31 {
+    width: 333px;
+    float: left;
+}
+
+#msoft_22, #msoft_33 {
+    width: 227px;
+    float: right;
+}
+
+.ms_employee img {
+    width: 323px;
+}
+
+#sidebar #links
+{
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#sidebar {
+    width: 23%;
+    background: mediumaquamarine;
+    float: right;
+    display: flex;
+}
+
+#sidebar a {
+    color: steelblue;
+    font-style: normal;
+    text-decoration: solid;
+    font-size: xx-large;
+    display: block;
+    margin: 7px 0 7px 7px;
+    border: solid;
+    padding: 20px 15px 20px 15px;
+}
+
+#sidebar a:hover {
+    color: gold;
+}
+
+#footer {
+    height: 4%;
+    background: lightseagreen;
+    color: papayawhip;
+
+    display: flex;
+    align-items: center;
+    font-family: Verdana;
+    font-size: larger;
+}
+
+#ms_team h3 {
+    margin: 32px 0 4px 0;
+}
+
+#ms_team h4 {
+    margin: 3px 0 2px 0;
+}
