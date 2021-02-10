@@ -1,30 +1,24 @@
-﻿@using ImageStock.Data.Models;
-@using ImageStock.Data.Interfaces;
-@model IGallery;
+﻿@using ImageStock.Data.Models
+@model Gallery
+@{ViewBag.Title = "Галерея";}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Галерея</title>
-    <link rel="stylesheet" type="text/css" href="~/styles/main.css" />
-    <link rel="stylesheet" type="text/css" href="~/styles/gallery.css" />
-</head>
-<body>
-    <div id="header">
-        <div id="menu">
-            <a class="menu_item" href="home">Головна</a>
-            <a class="menu_item" href="gallery">Галерея</a>
-            <a class="menu_item" href="upload">Завантажити</a>
-        </div>
-    </div>
-    <div id="mainBody">
+
+<script src="~/scripts/gallery.js"></script>
+<script>
+    $(function () {
+        //showImgView(2);
+    })
+</script>
+
+<div id="galleryMainBody">
+    <h1 class="my-3">Галерея</h1>
+    <div class="overflow-auto">
         <div id="postsGrid">
             @{
-                foreach (Post post in Model.Posts)
+                foreach (PostInfo post in Model.Posts)
                 {
-                    <div class="postPreview">
-                        <img class="postPreviewImg" src="@post.ImgUrl" />
+                    <div class="postPreview" data-postId="@post.Id">
+                        <img class="postPreviewImg" src="@Url.Content(post.ImgUrl)" />
                         <div class="postPreviewInfo">
                             <div class="postPreviewInfoContent">
                                 <div class="postTitle">@post.Title</div>
@@ -35,6 +29,13 @@
             }
         </div>
     </div>
-    <div id="footer">copyright © 2020</div>
-</body>
-</html>
+</div>
+
+<!-- Modal -->
+<div class="modal @*fade*@" id="imgViewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div id="imgViewModalContent" class="modal-dialog modal-lg modal-dialog-centered">
+    </div>
+</div>
+
+
+<link rel="stylesheet" type="text/css" href="~/styles/gallery.css" />

@@ -1,0 +1,100 @@
+﻿@using ImageStock.Data.Models
+@model PostInfo
+
+@{ 
+    ViewBag.Title = $"Допис: {Model.Title}";
+    UserProfile currUser = ViewData["CurrentUser"] as UserProfile;
+    if (currUser == null)
+        currUser = UserProfile.Guest;
+}
+
+<link rel="stylesheet" href="~/styles/viewpost.css" />
+<script type="text/javascript" charset="utf-8" src="~/scripts/viewpost.js"></script>
+
+<!-- Modal -->
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">
+        Автор: @{ 
+            if (Model.Author != null)
+                @Html.Raw(Model.Author.Username)
+            else
+                @Html.Raw("невідомий")
+        }
+        </h5>
+        <div class="ml-auto">
+            @{
+                if (currUser != null)
+                {
+                    if (currUser.IsAdmin || currUser.Id == Model.Author?.Id)
+                    {
+                        <button id="editBtn" class="btn btn-warning mr-1 d-none">✎</button>
+                        <button id="deleteBtn" class="btn btn-danger mr-lg-3">🗑</button>
+                    }
+                }
+            }
+            <button id="closeModalBtn" class="btn btn-danger px-3 py-1" data-dismiss="modal">x</button>
+        </div>
+    </div>
+    <div id="wrapBody" class="modal-body d-flex">
+        <div id="mainContent" class="container d-flex align-items-center" data-postid="@Model.Id">
+            <img id="postViewImg" src="@Url.Content(Model.ImgUrl)" class="img-fluid mx-auto" />
+        </div>
+        <div id="additionalContent" class="container py-1 d-flex flex-column">
+            <div class="overflow-auto">
+                <div id="titleNdescript" class="">
+                    <h3>@Model.Title</h3>
+                    <p>
+                        @Model.Description
+                    </p>
+                </div>
+                <div id="commentsSection" class="">
+                    <h4>Коментарі</h4>
+                    @{
+                        if (Model.Comments != null)
+                        {
+                            foreach (var comment in Model.Comments)
+                            {
+                                if (comment.Writer == null)
+                                    comment.Writer = UserProfile.Guest;
+
+                                <div class="commentInfo" data-comment_id="@comment.Id"
+                                     data-author_id="@comment.WriterId">
+                                    <div class="userInfo d-inline-block">
+                                        <div class="userAvatar d-inline-block">
+                                            <img src="@comment.Writer.GetAvatarUrl()" />
+                                        </div>
+                                        <div class="userName d-inline-block">@comment.Writer.Username</div>
+                                    </div>
+                                    <span>: </span>
+                                    <div class="commentText d-inline-block">
+                                        <p>@comment.Text</p>
+                                    </div>
+                                    <div class="cmtControlPanel">
+                                        @if (currUser.IsAdmin || currUser.IsValid && currUser.Id == comment.WriterId)
+                                        {
+                                            <a href="#" class="deleteCmt">Видалити</a>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+            <div id="commentForm" class="">
+                <form method="post" action="/gallery/addcomment"
+                      enctype="multipart/form-data">
+                    <div class="form-group d-flex">
+                        <input type="hidden" name="post_id" value="@Model.Id" />
+                        <input type="hidden" name="author" value="@currUser.Username" />
+                        <input type="hidden" name="author_id" value="@currUser.Id" />
+                        <input type="hidden" name="author_avatar_url" value="@currUser.GetAvatarUrl()" />
+                        <textarea class="form-control mx-1" name="comment_text" placeholder="Ваш коментар..." rows="1"></textarea>
+                        <input class="btn btn-success mx-1" type="submit" value="✉" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

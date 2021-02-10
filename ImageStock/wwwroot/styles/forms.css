@@ -1,0 +1,39 @@
+﻿.formCaption {
+    color: #05b7e6;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.mainButton {
+    border: solid;
+    color: #ffffff;
+    border-radius: 7%;
+    background-color: #57a7ff;
+    border-color: #57a7ff;
+    padding: 5px 14px;
+}
+
+.mainButton:hover {
+    background-color: #57a7ff;
+    border-color: #57a7ff;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.formBody {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btnSubmit {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}

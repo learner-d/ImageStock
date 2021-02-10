@@ -1,0 +1,30 @@
+﻿@using ImageStock.Data.Models
+@model UserProfile
+
+@{bool loggedIn = Model != null; }
+<li id="profileInfo" class="nav-item @{if (loggedIn) @Html.Raw("dropdown");}">
+    <div class="ml-auto">
+        @{
+            if (loggedIn)
+            {
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img id="profileAvatar" src="@Url.Content("~/img/admin_avatar.png")" />
+                    @Html.Raw(Model.Username)
+                </a>
+                <div class="dropdown-menu">
+                    @{
+                        if (Model.IsAdmin)
+                        {
+                            <a class="dropdown-item d-none" href="@Url.Action("index", "admin")">Адміністрування</a>
+                        }
+                    }
+                    <a class="dropdown-item" href="@Url.Action("logout")">Вийти</a>
+                </div>
+            }
+            else
+            {
+                <a class="nav-link" href="@Url.Action("login")">Увійти</a>
+            }
+        }
+    </div>
+</li>

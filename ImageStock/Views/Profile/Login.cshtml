@@ -1,0 +1,27 @@
+﻿@using ImageStock.Data.Models.Views
+@model LoginFormData
+@{ViewBag.Title = "Увійти"; }
+
+<link href="~/styles/login_page.css" rel="stylesheet" />
+<link href="~/styles/forms.css" rel="stylesheet" />
+
+<div class="formBody col-md-6 position-absolute">
+    <h3 class="formCaption">Увійти в систему</h3>
+    <form class="p-5" asp-action="Login" asp-controller="Profile" asp-antiforgery="true">
+        <div class="validation text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <input asp-for="Username" class="form-control" placeholder="Ім'я користувача" />
+            <span asp-validation-for="Username" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <input asp-for="Password" class="form-control" placeholder="Пароль" />
+            <span asp-validation-for="Password" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="mainButton" value="Увійти" />
+        </div>
+        <div class="form-group">
+            <a id="registerLink" href="@Url.Action("register")">Зареєструватися</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/styles/bootstrap.min.css" />
+    <script src="~/scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/main.js"></script>
+</head>
+<body>
+    <nav id="header" class="navbar navbar-light navbar-expand">
+        @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headerContent" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>*@
+        <div class="collapse navbar-collapse justify-content-center" id="headerContent">
+            <a class="navbar-brand" href="#">
+                <img class="site-logo" src="~/img/logo.png" />
+            </a>
+            <ul class="navbar-nav offset-1">
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="/">Головна</a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="/gallery">Галерея</a>
+                </li>
+                <li class="nav-item menu-item">
+                    <a class="nav-link" href="/upload">Завантажити</a>
+                </li>
+            </ul>
+            @*@{
+                string ip = "невідомий";
+                if (true)
+                {
+                    ip = Context.Connection.RemoteIpAddress.ToString();
+                }
+                @Html.Raw($"Ваш IP: {ip}")
+            }*@
+            <ul class="navbar-nav" id="profileInfoO">
+                @Html.Action("Brief", "Profile")
+            </ul>
+        </div>
+    </nav>
+    <div id="mainBody" class="container-fluid overflow-hidden position-relative">
+        @RenderBody()
+    </div>
+    <div id="footer" class="d-flex justify-content-center align-items-center">copyright © 2020</div>
+
+    <!-- Modal -->
+    <div class="modal" id="infoWindow" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center m-4">
+                        <span id="messageText">Інформація</span>
+                    </div>
+                    <div id="modalOptions" class="btn-group d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary ml-2">Опція 1</button>
+                        <button type="button" class="btn btn-dark ml-2">Опція 2</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

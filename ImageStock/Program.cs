@@ -20,6 +20,9 @@ namespace ImageStock
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //string hostUrl = "http://0.0.0.0:5000";
+                    //webBuilder.UseUrls(hostUrl);
+                    webBuilder.UseIISIntegration();
                     webBuilder.UseStartup<Startup>();
                 });
     }

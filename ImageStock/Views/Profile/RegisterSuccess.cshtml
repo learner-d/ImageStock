@@ -1,0 +1,45 @@
+﻿@using ImageStock.Data.Models
+@model UserProfile
+@{ViewBag.Title = "Зареєстровано";}
+
+<style>
+    #infoContent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: dashed;
+        width: fit-content;
+        height: fit-content;
+        min-width: 600px;
+        min-height: 100px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color: #fbde60;
+        color: #2c8ccd;
+    }
+
+    #loginLink {
+        padding: 2px 10px;
+        border: solid;
+        color: #e18e22;
+        border-radius: 5%;
+    }
+
+        #loginLink:hover {
+            background-color: #f8bb37;
+            border-color: #f8bb37;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+    #msg1, #msg2 {
+        font-weight: normal;
+        margin-left: 3%;
+    }
+</style>
+
+<div id="infoContent" class="d-flex flex-column justify-content-center p-5">
+    <h1>Вітаємо, @Model.Username!</h1>
+    <h3 id="msg1" class="my-3">Ваш профіль було успішно створено.</h3>
+    <h3 id="msg2">Тепер ви можете <a id="loginLink" href="@Url.Action("login", "profile")">увійти</a>.</h3>
+</div>

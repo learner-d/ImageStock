@@ -1,51 +1,106 @@
 ﻿body {
     background-color: floralwhite;
-}
-
-#header, #mainBody, #footer {
-    margin: 5px;
+    min-height: 500px;
+    min-width: 500px;
 }
 
 #header {
+    height: 7vh;
+    min-height: 30px;
     background-color: floralwhite;
-    min-height: 50px;
-    height: 8vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index: 10;
+    position: relative;
 }
 
 #mainBody {
-    height: 80vh;
-    background-color: #ffe874;
+    height: 85vh;
+    min-height: 400px;
+    background-image: url('/img/site-bg.jpg');
+    background-size: contain;
+    background-repeat:repeat;
+    background-position: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #3575d5;
-    overflow: auto;
+    background-color: #fcfcac;
 }
 
 #footer {
-    background-color: powderblue;
-    min-height: 50px;
     height: 8vh;
+    min-height: 30px;
+    background-color: powderblue;
     font-family: 'Segoe UI';
     font-size: large;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: ghostwhite;
 }
 
-
-#menu {
-    vertical-align: middle;
+.navbar-brand {
 }
 
-.menu_item {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-decoration: none;
-    padding: 10px;
+.site-logo {
+    height: 100px;
+    width: auto;
 }
 
-.menu_item:hover {
+.menu-item {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.menu-item:hover {
     background-color: #f9c582;
+}
+
+.menu-item > a {
+    color: #3575d5 !important;
+}
+
+
+
+#profileInfo {
+    position: relative;
+    left: 50%;
+}
+
+#profileInfo a {
+    position: relative;
+    color: #0ac5d1 !important;
+}
+
+#profileAvatar {
+    max-width: 8%;
+    max-height: 8%;
+    min-height: 30px;
+    min-width: 30px;
+}
+
+#greetingLbl{
+    
+}
+
+#postsCarousel {
+    height: 50%;
+    width: 50%;
+    background-color: #8fc1c8;
+    border: dashed;
+}
+
+#postsCarousel > .carousel-inner {
+    height: 100%;
+    width: 100%;
+}
+
+#postsCarousel > .carousel-inner > .carousel-item {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#postsCarousel > .carousel-inner 
+ > .carousel-item > img
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+    max-width: 100%;
 }

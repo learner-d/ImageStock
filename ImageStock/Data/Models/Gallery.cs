@@ -7,7 +7,11 @@ namespace ImageStock.Data.Models
 {
     public class Gallery
     {
-        protected List<Post> posts;
-        public IReadOnlyList<Post> Posts => posts;
+        protected List<PostInfo> _posts;
+        public IReadOnlyList<PostInfo> Posts => _posts;
+        public Gallery(IQueryable<PostInfo> posts)
+        {
+            _posts = posts.ToList();
+        }
     }
 }

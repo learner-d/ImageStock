@@ -1,0 +1,31 @@
+﻿@using ImageStock.Data.Models.Views
+@model RegisterFormData
+@{ViewBag.Title = "Реєстрація"; }
+
+<link href="~/styles/login_page.css" rel="stylesheet" />
+<link href="~/styles/forms.css" rel="stylesheet" />
+
+<div class="formBody col-md-6 position-absolute">
+    <h3 class="formCaption">Реєстрація</h3>
+    <form class="px-5 py-2" asp-action="Register" asp-controller="Profile" asp-antiforgery="true">
+        <div class="validation text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control" placeholder="Ім'я користувача" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="form-control" placeholder="Пароль" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" class="form-control" placeholder="Пароль" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="mainButton mt-2" value="Зареєструватися" />
+        </div>
+    </form>
+</div>
