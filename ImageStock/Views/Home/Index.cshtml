@@ -1,4 +1,4 @@
-﻿@model ImageStock.Data.AppDbContext
+﻿@model HomePage
 @using ImageStock.Data.Models
 @{ViewBag.Title = "ImageStock";}
 
@@ -24,23 +24,46 @@
     <p class="text-center" style="font-size: large; color: #4674cb">Ось що ми підготували для тебе</p>
     <div id="postsCarousel" class="carousel slide mx-auto" data-ride="carousel" data-interval="2000">
         @{ 
-            const int POST_MAX = 3;
+            const int POST_MAX = 5;
         }
         <ol class="carousel-indicators">
-            <li data-target="#postsCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#postsCarousel" data-slide-to="1"></li>
-            <li data-target="#postsCarousel" data-slide-to="2"></li>
+            @{
+                IEnumerable<PostInfo> posts = Model.GetRandomPosts(POST_MAX);
+                int i = 0;
+                foreach (PostInfo post in posts)
+                {
+                    if (i == 0)
+                    {
+                        @:<li data-target="#postsCarousel" data-slide-to="0" class="active"></li>
+                    }
+                    else
+                    {
+                        @:<li data-target="#postsCarousel" data-slide-to="@i"></li>
+                    }
+                    i++;
+                }
+            }
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="~/img/aestetic_5.jpg">
-            </div>
-            <div class="carousel-item">
-                <img src="~/img/aestetic_7.jpg">
-            </div>
-            <div class="carousel-item">
-                <img src="~/img/ukraine_4.jpg">
-            </div>
+            @{
+                int j = 0;
+                foreach (PostInfo post in posts)
+                {
+                    if (j == 0)
+                    {
+                        <div class="carousel-item active">
+                            <img src="@post.ImgUrl.TrimStart('~')">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <img src="@post.ImgUrl.TrimStart('~')">
+                        </div>
+                    }
+                    j++;
+                }
+            }
         </div>
         <a class="carousel-control-prev" href="#postsCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

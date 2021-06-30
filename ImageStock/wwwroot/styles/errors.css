@@ -1,0 +1,40 @@
+﻿#errorView {
+    font-family: "Varela", "Verdana", sans-serif !important;
+    color: rgb(100 90 120) !important;
+}
+
+#errorView > div {
+    background: #b05c2a30;
+    border-radius: 5%;
+    width: 40%;
+    min-width: 400px;
+}
+
+#errorImg {
+    position: relative;
+    max-height: 200px;
+    max-width: 200px;
+    height: 40%;
+    margin-top: 5%;
+}
+
+#errorCodeLabel {
+    font-size: 6rem;
+    line-height: 1.1;
+    margin: 0;
+}
+
+#errorMessageLabel {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Arial";
+    line-height: 1;
+    margin: 0;
+}
+
+#errorDescriptionLabel {
+    font-style: italic;
+    font-family: "Arial";
+    font-size: 0.8rem;
+    line-height: 2.9;
+}

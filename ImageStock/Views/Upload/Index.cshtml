@@ -7,12 +7,12 @@
 
 <div id="uploadContainer" class="p-2 position-absolute">
     <div class="row my-3">
-        <form class="col-4 offset-1" method="post" enctype="multipart/form-data">
+        <form class="col-4 offset-1" method="post" enctype="multipart/form-data" onsubmit="doUpload">
             <h5 class="ml-1 mt-2 mb-3">Створити допис</h5>
             <div class="validation text-danger" asp-validation-summary="ModelOnly"></div>
             <div class="form-group">
                 <label asp-for="ImgFile"></label>
-                <input id="imgInp" asp-for="ImgFile">
+                <input id="imgInp" asp-for="ImgFile" onchange="setImgFromFile(this, '#uploadImg');">
             </div>
             <div class="form-group">
                 <label asp-for="Title"></label>

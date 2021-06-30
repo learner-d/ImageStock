@@ -19,12 +19,14 @@ namespace ImageStock
 {
     public class Startup
     {
-        private IConfigurationRoot _confRoot;
+        private readonly IWebHostEnvironment _env;
+        private readonly IConfigurationRoot _confRoot;
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 
         public Startup(IWebHostEnvironment env)
         {
+            _env = env;
             _confRoot = new ConfigurationBuilder().SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json").Build();
             AppDomain.CurrentDomain.SetData("DataDirectory", env.ContentRootPath);
@@ -35,8 +37,6 @@ namespace ImageStock
         {
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
-            services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
 
             string dbConnetionString = _confRoot.GetConnectionString("DefaultConnection");
             Console.WriteLine(dbConnetionString);
@@ -50,24 +50,27 @@ namespace ImageStock
                     options.LoginPath = new PathString("/Profile/Login");
                 });
 
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            IMvcBuilder mvcBuilder = services.AddMvc(mvcOptions => mvcOptions.EnableEndpointRouting = false);
+            if(_env.IsDevelopment())
+                mvcBuilder.AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment() || true)
+            //Перевірка чи перебуває програма на стадії розробки
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseStatusCodePages();
             }
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseStatusCodePagesWithReExecute("/home/error", "?code={0}");
+
+            app.UseAuthentication();     //підтримка автентифікації
+            app.UseAuthorization();      //підтримка авторизації
 
             app.UseStaticFiles();
-            app.UseRouting();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvcWithDefaultRoute();//маршритизацію виду MVC - <сайт>/<контролер>/<дія>
         }
     }
 }

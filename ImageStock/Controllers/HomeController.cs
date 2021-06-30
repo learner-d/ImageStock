@@ -22,7 +22,12 @@ namespace ImageStock.Controllers
         {
             //return RedirectToAction("Users", "Admin");
             ViewData["HttpContext"] = HttpContext;
-            return View(_appDbContext);
+            return View(new HomePage(_appDbContext));
+        }
+
+        public IActionResult Error(int code)
+        {
+            return View(ErrorInfo.FromStatusCode(code));
         }
     }
 }

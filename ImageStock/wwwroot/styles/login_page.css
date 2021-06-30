@@ -1,4 +1,9 @@
-﻿#registerLink {
+﻿.formBody {
+    background: #ff982dbf!important;
+    color: #0062cc!important;
+}
+
+#registerLink {
     color: #0062cc;
     font-weight: 600;
     text-decoration: none;

@@ -1,0 +1,17 @@
+﻿@model ImageStock.Data.Models.ErrorInfo
+@{
+    ViewData["Title"] = $"Помилка {Model.StatusCode}";
+    ViewData["SiteBg"] = "/img/site-error-bg.png";
+}
+
+<link rel="stylesheet" type="text/css" href="/styles/util.css"/>
+<link rel="stylesheet" type="text/css" href="/styles/errors.css"/>
+<div id="errorView" class="flex-full-center">
+    <div class="flex-center flex-column">
+        <img id="errorImg" src="@Model.ImgUrl" />
+        <p id="errorCodeLabel">@Model.StatusCode</p>
+        <p id="errorMessageLabel" class="text-center">@Model.Message</p>
+        <p id="errorDescriptionLabel">@Model.Description</p>
+    </div>
+</div>
+

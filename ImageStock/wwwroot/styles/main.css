@@ -12,18 +12,6 @@
     position: relative;
 }
 
-#mainBody {
-    height: 85vh;
-    min-height: 400px;
-    background-image: url('/img/site-bg.jpg');
-    background-size: contain;
-    background-repeat:repeat;
-    background-position: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #3575d5;
-    background-color: #fcfcac;
-}
-
 #footer {
     height: 8vh;
     min-height: 30px;

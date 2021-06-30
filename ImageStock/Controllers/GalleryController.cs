@@ -36,7 +36,7 @@ namespace ImageStock.Controllers
                 ViewData.Add("CurrentUser", _appDbContext.GetUserProfile(User));
                 return PartialView(post);
             }
-            return StatusCode((int)HttpStatusCode.BadRequest);
+            return StatusCode((int)HttpStatusCode.NotFound);
         }
         public async Task<IActionResult> DeletePost(int id)
         {

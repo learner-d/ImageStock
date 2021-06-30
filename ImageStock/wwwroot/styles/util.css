@@ -1,0 +1,31 @@
+﻿.flex-vertical-center {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+
+    display: flex;
+    justify-content: center;
+}
+
+.flex-full-center {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-width: 100%; /* Fallback for browsers do NOT support vh unit */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexbox-h {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexbox-v {
+    display: flex;
+    flex-direction: row;
+}

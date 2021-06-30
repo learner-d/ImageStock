@@ -72,7 +72,7 @@ namespace ImageStock.Controllers
             string directory = _webHostEnvironment.WebRootPath + "\\storage\\images\\";
             char[] filename = new char[16];
 
-            string path = null;
+            string path;
             do
             {
                 Random rnd = new Random();
@@ -90,7 +90,7 @@ namespace ImageStock.Controllers
         private string ConvertPath(string path)
         {
             StringBuilder str = new StringBuilder(path);
-            str.Replace(_webHostEnvironment.WebRootPath, "~");
+            str.Replace(_webHostEnvironment.WebRootPath, "");
             str.Replace('\\', '/');
             return str.ToString();
         }

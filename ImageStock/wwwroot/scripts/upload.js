@@ -17,24 +17,24 @@
         }
 
     });
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#uploadImg').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function () {
-        readURL(this);
-    });
-
-    $('form').submit(doUpload);
 });
+
+function setImgFromFile(fileInput, imgSelector, onLoadAction, onErrAction) {
+	if (fileInput.files && fileInput.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function (e) {
+            $(imgSelector).attr('src', e.target.result);
+            if (onLoadAction)
+	            onLoadAction();
+		}
+        reader.onerror = onErrAction;
+
+        $(imgSelector).attr('src', '/img/loading.gif');
+        reader.readAsDataURL(fileInput.files[0]);
+	}
+}
+
 
 function doUpload(submitEventData) {
     submitEventData.preventDefault();

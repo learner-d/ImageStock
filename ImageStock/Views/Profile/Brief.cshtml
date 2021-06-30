@@ -8,7 +8,7 @@
             if (loggedIn)
             {
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="profileAvatar" src="@Url.Content("~/img/admin_avatar.png")" />
+                    <img id="profileAvatar" src="@Url.Content(Model.GetAvatarUrl())" />
                     @Html.Raw(Model.Username)
                 </a>
                 <div class="dropdown-menu">

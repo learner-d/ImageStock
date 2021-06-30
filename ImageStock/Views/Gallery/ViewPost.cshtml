@@ -2,7 +2,7 @@
 @model PostInfo
 
 @{ 
-    ViewBag.Title = $"Допис: {Model.Title}";
+    ViewData["Title"] = $"Допис: {Model.Title}";
     UserProfile currUser = ViewData["CurrentUser"] as UserProfile;
     if (currUser == null)
         currUser = UserProfile.Guest;
