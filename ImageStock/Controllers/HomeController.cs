@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ImageStock.Data;
+﻿using ImageStock.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using ImageStock.Data.Models;
 
 namespace ImageStock.Controllers
@@ -17,14 +12,12 @@ namespace ImageStock.Controllers
             _appDbContext = appDbContext;
             //AppDbContext.SetupDefaults(appDbContext);
         }
-        //[Authorize]
         public IActionResult Index()
         {
             //return RedirectToAction("Users", "Admin");
             ViewData["HttpContext"] = HttpContext;
             return View(new HomePage(_appDbContext));
         }
-
         public IActionResult Error(int code)
         {
             return View(ErrorInfo.FromStatusCode(code));

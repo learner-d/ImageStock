@@ -1,12 +1,9 @@
 ﻿using ImageStock.Data.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace ImageStock.Data
 {
@@ -19,16 +16,12 @@ namespace ImageStock.Data
         public UserProfile GetUserProfile(ClaimsPrincipal user)
         {
             if (user != null)
-            {
                 return Users.FirstOrDefault(u => u.Username == user.Identity.Name); 
-            }
             return null;
         }
-
         public AppDbContext(DbContextOptions<AppDbContext> contextOptions) : base(contextOptions)
         {
         }
-
         private static bool _inited = false;
         public static void SetupDefaults(AppDbContext appDbContext)
         {
